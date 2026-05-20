@@ -312,9 +312,85 @@
       }
 
       .price-item strong {
+        display: block;
         color: var(--navy);
         font-size: 0.96rem;
         font-weight: 950;
+      }
+
+      .price-usd {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      .review-box {
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid #eadfcf;
+        border-radius: 8px;
+        background: #fffdf9;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+        color: var(--red);
+        font-size: 0.86rem;
+        font-weight: 950;
+      }
+
+      .review-count {
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+
+      .guide-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .stat-card {
+        padding: 10px;
+        border-radius: 8px;
+        background: #eef7f6;
+      }
+
+      .stat-card span {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 850;
+      }
+
+      .stat-card strong {
+        color: var(--teal);
+        font-size: 0.96rem;
+        font-weight: 950;
+      }
+
+      .review-box blockquote {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.92rem;
+      }
+
+      .review-box cite {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-style: normal;
+        font-weight: 800;
       }
 
       .pill {
@@ -442,7 +518,8 @@
       }
 
       .result-price {
-        display: inline-flex;
+        display: flex;
+        flex-wrap: wrap;
         align-items: baseline;
         gap: 8px;
         margin-bottom: 10px;
@@ -455,6 +532,45 @@
         color: var(--muted);
         font-size: 0.78rem;
         font-weight: 800;
+      }
+
+      .result-price .usd-price {
+        color: var(--teal);
+        font-size: 0.94rem;
+        font-weight: 900;
+      }
+
+      .result-review {
+        margin: 0 0 10px;
+        padding: 10px 12px;
+        border-left: 3px solid var(--red);
+        background: #fff8ec;
+        color: var(--ink);
+        font-size: 0.9rem;
+      }
+
+      .result-review span {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--red);
+        font-size: 0.76rem;
+        font-weight: 950;
+      }
+
+      .result-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .result-stats span {
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: #eef7f6;
+        color: var(--teal);
+        font-size: 0.78rem;
+        font-weight: 900;
       }
 
       .result-card h3 {
@@ -591,6 +707,10 @@
           grid-template-columns: 1fr;
         }
 
+        .guide-stats {
+          grid-template-columns: 1fr;
+        }
+
         .result-card {
           grid-template-columns: 1fr;
         }
@@ -673,120 +793,12 @@
         <div class="section-head">
           <h2>Meet the student guides.</h2>
           <p>
-            Each guide has a different city rhythm. Choose someone based on the
-            neighborhoods, language support, and interests that fit your day.
+            Browse 15 student guides with prices, reviews, and average delay
+            records before choosing who fits your day.
           </p>
         </div>
 
-        <div class="guide-grid">
-          <article class="guide">
-            <div class="guide-media">
-              <img
-                src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80"
-                alt="Japanese university student guide smiling outdoors"
-              >
-            </div>
-            <div class="guide-body">
-              <span class="tag">Yui / Waseda</span>
-              <h3>Cafes, vintage shops, and campus culture.</h3>
-              <p>
-                Best for Shimokitazawa, Waseda, Kagurazaka, indie bookstores,
-                coffee stops, and relaxed English conversation.
-              </p>
-              <div class="guide-meta">
-                <span class="pill">English</span>
-                <span class="pill">Cafe</span>
-                <span class="pill">Shopping</span>
-              </div>
-              <div class="price-box" aria-label="Yui guide pricing">
-                <div class="price-item">
-                  <span>3 hours</span>
-                  <strong>¥6,000</strong>
-                </div>
-                <div class="price-item">
-                  <span>5 hours</span>
-                  <strong>¥9,000</strong>
-                </div>
-                <div class="price-item">
-                  <span>Full day</span>
-                  <strong>¥13,000</strong>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="guide">
-            <div class="guide-media">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
-                alt="Japanese university student guide in the city"
-              >
-            </div>
-            <div class="guide-body">
-              <span class="tag">Ren / Keio</span>
-              <h3>Food alleys, train tips, and night views.</h3>
-              <p>
-                Best for Shibuya, Ebisu, Yokohama, ramen counters, skyline
-                spots, and learning how Tokyo transit actually works.
-              </p>
-              <div class="guide-meta">
-                <span class="pill">English</span>
-                <span class="pill">Food</span>
-                <span class="pill">Night</span>
-              </div>
-              <div class="price-box" aria-label="Ren guide pricing">
-                <div class="price-item">
-                  <span>3 hours</span>
-                  <strong>¥7,000</strong>
-                </div>
-                <div class="price-item">
-                  <span>5 hours</span>
-                  <strong>¥10,000</strong>
-                </div>
-                <div class="price-item">
-                  <span>Full day</span>
-                  <strong>¥14,000</strong>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="guide">
-            <div class="guide-media">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
-                alt="Japanese university student guide near a park"
-              >
-            </div>
-            <div class="guide-body">
-              <span class="tag">Aoi / Meiji</span>
-              <h3>Temples, anime shops, and photo walks.</h3>
-              <p>
-                Best for Asakusa, Akihabara, Yanaka, Ueno, shrine manners,
-                character goods, and gentle Japanese phrase practice.
-              </p>
-              <div class="guide-meta">
-                <span class="pill">English</span>
-                <span class="pill">Anime</span>
-                <span class="pill">Culture</span>
-              </div>
-              <div class="price-box" aria-label="Aoi guide pricing">
-                <div class="price-item">
-                  <span>3 hours</span>
-                  <strong>¥6,500</strong>
-                </div>
-                <div class="price-item">
-                  <span>5 hours</span>
-                  <strong>¥9,500</strong>
-                </div>
-                <div class="price-item">
-                  <span>Full day</span>
-                  <strong>¥13,500</strong>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
+        <div class="guide-grid" id="guideGrid"></div>
       </section>
 
       <section class="section" id="match">
@@ -942,57 +954,354 @@
     </footer>
 
     <script>
+      const guidePhotos = [
+        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+      ];
+
+      function priceSet(jpy3, usd3, jpy5, usd5, jpy7, usd7) {
+        return {
+          3: { jpy: jpy3, usd: usd3 },
+          5: { jpy: jpy5, usd: usd5 },
+          7: { jpy: jpy7, usd: usd7 }
+        };
+      }
+
       const guides = [
         {
           name: "Yui",
           school: "Waseda University",
-          image:
-            "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80",
+          image: guidePhotos[0],
           areas: ["kichijoji", "shibuya", "asakusa"],
           interests: ["shopping", "culture", "photo"],
-          prices: {
-            3: "¥6,000",
-            5: "¥9,000",
-            7: "¥13,000"
-          },
+          tags: ["English", "Cafe", "Shopping"],
+          prices: priceSet("¥6,000", "$40", "¥9,000", "$60", "¥13,000", "$87"),
+          rating: "4.9",
+          reviewCount: "28",
+          averageDelay: "2 min",
+          review:
+            "Yui made Tokyo feel calm and personal. The cafe and bookstore route was exactly what I wanted.",
+          reviewer: "Emma, Australia",
           route: "Shimokitazawa vintage shops, Waseda campus, Kagurazaka cafes",
+          headline: "Cafes, vintage shops, and campus culture.",
           bio: "Relaxed conversation, coffee stops, bookstores, and everyday student life."
         },
         {
           name: "Ren",
           school: "Keio University",
-          image:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+          image: guidePhotos[1],
           areas: ["shibuya", "yokohama"],
           interests: ["food", "night", "shopping"],
-          prices: {
-            3: "¥7,000",
-            5: "¥10,000",
-            7: "¥14,000"
-          },
+          tags: ["English", "Food", "Night"],
+          prices: priceSet("¥7,000", "$47", "¥10,000", "$67", "¥14,000", "$93"),
+          rating: "4.8",
+          reviewCount: "34",
+          averageDelay: "4 min",
+          review:
+            "Ren knew the best food counters and helped us understand the trains without stress.",
+          reviewer: "Lucas, United States",
           route: "Shibuya backstreets, Ebisu food counters, Yokohama night view",
+          headline: "Food alleys, train tips, and night views.",
           bio: "Food-focused routes, train confidence, and casual nightlife."
         },
         {
           name: "Aoi",
           school: "Meiji University",
-          image:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
+          image: guidePhotos[2],
           areas: ["asakusa", "kamakura", "shibuya"],
           interests: ["anime", "culture", "photo"],
-          prices: {
-            3: "¥6,500",
-            5: "¥9,500",
-            7: "¥13,500"
-          },
+          tags: ["English", "Anime", "Culture"],
+          prices: priceSet("¥6,500", "$43", "¥9,500", "$63", "¥13,500", "$90"),
+          rating: "4.9",
+          reviewCount: "31",
+          averageDelay: "1 min",
+          review:
+            "Aoi explained shrine manners clearly and found great photo spots around Asakusa and Yanaka.",
+          reviewer: "Sofia, Spain",
           route: "Asakusa temple walk, Akihabara shops, Yanaka old-town lanes",
+          headline: "Temples, anime shops, and photo walks.",
           bio: "Anime, shrine etiquette, simple Japanese phrases, and photo spots."
+        },
+        {
+          name: "Haru",
+          school: "University of Tokyo",
+          image: guidePhotos[1],
+          areas: ["asakusa", "kichijoji"],
+          interests: ["culture", "photo", "food"],
+          tags: ["English", "History", "Photo"],
+          prices: priceSet("¥7,500", "$50", "¥11,000", "$73", "¥15,000", "$100"),
+          rating: "4.7",
+          reviewCount: "22",
+          averageDelay: "3 min",
+          review:
+            "Haru connected old Tokyo history with places we could actually enjoy walking.",
+          reviewer: "Mia, Canada",
+          route: "Ueno museums, Yanaka lanes, Nezu Shrine, local sweets",
+          headline: "Old Tokyo history with quiet local walks.",
+          bio: "Good for museum routes, traditional streets, and slower cultural days."
+        },
+        {
+          name: "Mina",
+          school: "Sophia University",
+          image: guidePhotos[0],
+          areas: ["shibuya", "kichijoji"],
+          interests: ["shopping", "food", "photo"],
+          tags: ["English", "Korean", "Fashion"],
+          prices: priceSet("¥6,800", "$45", "¥9,800", "$65", "¥13,800", "$92"),
+          rating: "4.8",
+          reviewCount: "26",
+          averageDelay: "2 min",
+          review:
+            "Mina found small fashion stores and helped us order at places with no English menu.",
+          reviewer: "Nora, Germany",
+          route: "Harajuku side streets, Omotesando design shops, Kichijoji dinner",
+          headline: "Fashion, snacks, and bilingual city energy.",
+          bio: "Best for shopping routes, cute cafes, and easy conversation."
+        },
+        {
+          name: "Daiki",
+          school: "Tokyo Tech",
+          image: guidePhotos[1],
+          areas: ["yokohama", "shibuya"],
+          interests: ["night", "food", "photo"],
+          tags: ["English", "Tech", "Night"],
+          prices: priceSet("¥7,200", "$48", "¥10,500", "$70", "¥14,800", "$99"),
+          rating: "4.6",
+          reviewCount: "19",
+          averageDelay: "5 min",
+          review:
+            "Daiki's Yokohama night route was smooth, friendly, and full of great skyline spots.",
+          reviewer: "Ethan, Singapore",
+          route: "Minato Mirai, Chinatown snacks, Osanbashi night view",
+          headline: "Yokohama lights and practical train support.",
+          bio: "Clear transit help, night photography, and modern city routes."
+        },
+        {
+          name: "Saki",
+          school: "Rikkyo University",
+          image: guidePhotos[2],
+          areas: ["kichijoji", "shibuya"],
+          interests: ["culture", "shopping", "food"],
+          tags: ["English", "Books", "Cafe"],
+          prices: priceSet("¥6,200", "$41", "¥9,200", "$61", "¥13,200", "$88"),
+          rating: "4.9",
+          reviewCount: "37",
+          averageDelay: "1 min",
+          review:
+            "Saki was punctual, thoughtful, and made a rainy afternoon feel special.",
+          reviewer: "Lena, France",
+          route: "Ikebukuro bookshops, Kichijoji park, small coffee stands",
+          headline: "Bookshops, parks, and quiet conversation.",
+          bio: "A calm guide for literature, cafes, parks, and slower Tokyo days."
+        },
+        {
+          name: "Kento",
+          school: "Chuo University",
+          image: guidePhotos[1],
+          areas: ["kamakura", "yokohama"],
+          interests: ["culture", "food", "photo"],
+          tags: ["English", "Temples", "Sea"],
+          prices: priceSet("¥7,800", "$52", "¥11,500", "$77", "¥15,500", "$103"),
+          rating: "4.7",
+          reviewCount: "24",
+          averageDelay: "6 min",
+          review:
+            "Kento gave us a relaxed Kamakura day with temples, beach views, and no rushed feeling.",
+          reviewer: "Grace, United Kingdom",
+          route: "Kamakura temples, Komachi Street snacks, Enoshima sunset",
+          headline: "Kamakura temples and seaside walks.",
+          bio: "Good for day trips, history, snacks, and coastal photo routes."
+        },
+        {
+          name: "Rina",
+          school: "Aoyama Gakuin University",
+          image: guidePhotos[0],
+          areas: ["shibuya", "asakusa"],
+          interests: ["shopping", "night", "photo"],
+          tags: ["English", "Style", "Photo"],
+          prices: priceSet("¥7,000", "$47", "¥10,200", "$68", "¥14,200", "$95"),
+          rating: "4.8",
+          reviewCount: "30",
+          averageDelay: "3 min",
+          review:
+            "Rina helped us find photo spots that looked great without being too crowded.",
+          reviewer: "Olivia, United States",
+          route: "Shibuya Sky area, Cat Street, Asakusa after sunset",
+          headline: "Stylish photo routes and city views.",
+          bio: "Great for fashion streets, skyline photos, and polished Tokyo routes."
+        },
+        {
+          name: "Toma",
+          school: "Hosei University",
+          image: guidePhotos[1],
+          areas: ["asakusa", "shibuya"],
+          interests: ["anime", "food", "culture"],
+          tags: ["English", "Anime", "Ramen"],
+          prices: priceSet("¥6,400", "$43", "¥9,400", "$63", "¥13,400", "$89"),
+          rating: "4.6",
+          reviewCount: "21",
+          averageDelay: "7 min",
+          review:
+            "Toma made Akihabara easier to understand and picked a ramen shop we loved.",
+          reviewer: "Noah, New Zealand",
+          route: "Akihabara shops, Kanda ramen, Asakusa evening walk",
+          headline: "Anime shops, ramen, and pop culture.",
+          bio: "Best for first-time anime shopping, casual food, and simple Japanese."
+        },
+        {
+          name: "Mei",
+          school: "Gakushuin University",
+          image: guidePhotos[2],
+          areas: ["kichijoji", "asakusa"],
+          interests: ["culture", "photo", "shopping"],
+          tags: ["English", "Art", "Garden"],
+          prices: priceSet("¥6,700", "$45", "¥9,700", "$65", "¥13,700", "$91"),
+          rating: "4.9",
+          reviewCount: "29",
+          averageDelay: "2 min",
+          review:
+            "Mei chose peaceful places and explained small customs in a very natural way.",
+          reviewer: "Isabella, Italy",
+          route: "Mejiro gardens, Yanaka crafts, Kichijoji gallery stops",
+          headline: "Gardens, art, and gentle local culture.",
+          bio: "A thoughtful match for art, gardens, crafts, and calm neighborhoods."
+        },
+        {
+          name: "Sho",
+          school: "Nihon University",
+          image: guidePhotos[1],
+          areas: ["yokohama", "kamakura"],
+          interests: ["food", "night", "culture"],
+          tags: ["English", "Street food", "Local"],
+          prices: priceSet("¥6,900", "$46", "¥10,000", "$67", "¥14,000", "$93"),
+          rating: "4.5",
+          reviewCount: "18",
+          averageDelay: "8 min",
+          review:
+            "Sho was easygoing and took us to food streets we would not have found alone.",
+          reviewer: "Daniel, Mexico",
+          route: "Yokohama Chinatown, Noge bars, harbor evening walk",
+          headline: "Street food and casual local nightlife.",
+          bio: "Friendly, flexible, and strongest around food streets and evening plans."
+        },
+        {
+          name: "Kana",
+          school: "Tokyo University of the Arts",
+          image: guidePhotos[0],
+          areas: ["asakusa", "kichijoji"],
+          interests: ["culture", "photo", "shopping"],
+          tags: ["English", "Art", "Craft"],
+          prices: priceSet("¥7,400", "$49", "¥10,800", "$72", "¥14,800", "$99"),
+          rating: "5.0",
+          reviewCount: "16",
+          averageDelay: "0 min",
+          review:
+            "Kana was perfectly on time and gave us an art-focused Tokyo day with real depth.",
+          reviewer: "Ava, United States",
+          route: "Ueno art museums, Kuramae crafts, Asakusa paper shops",
+          headline: "Art museums, crafts, and design details.",
+          bio: "Best for travelers who care about art, design, handmade goods, and museums."
+        },
+        {
+          name: "Ryota",
+          school: "Tokyo Metropolitan University",
+          image: guidePhotos[1],
+          areas: ["shibuya", "kichijoji"],
+          interests: ["night", "food", "shopping"],
+          tags: ["English", "Music", "Food"],
+          prices: priceSet("¥6,600", "$44", "¥9,600", "$64", "¥13,600", "$91"),
+          rating: "4.7",
+          reviewCount: "25",
+          averageDelay: "4 min",
+          review:
+            "Ryota understood the music scene and helped us find a fun live house.",
+          reviewer: "Jack, Ireland",
+          route: "Shimokitazawa records, live house area, late-night curry",
+          headline: "Music, records, and late-night food.",
+          bio: "A strong pick for music lovers, casual bars, and energetic neighborhoods."
+        },
+        {
+          name: "Nana",
+          school: "Ochanomizu University",
+          image: guidePhotos[2],
+          areas: ["asakusa", "kamakura"],
+          interests: ["culture", "food", "photo"],
+          tags: ["English", "Tea", "Culture"],
+          prices: priceSet("¥6,300", "$42", "¥9,300", "$62", "¥13,300", "$89"),
+          rating: "4.8",
+          reviewCount: "27",
+          averageDelay: "2 min",
+          review:
+            "Nana explained etiquette clearly and made us comfortable trying Japanese phrases.",
+          reviewer: "Chloe, Canada",
+          route: "Asakusa shrine manners, tea stop, Sumida riverside photos",
+          headline: "Etiquette, tea, and first-time confidence.",
+          bio: "Helpful for shrine manners, tea breaks, and nervous first-time visitors."
         }
       ];
 
       const form = document.querySelector("#matchForm");
+      const guideGrid = document.querySelector("#guideGrid");
       const resultCopy = document.querySelector("#resultCopy");
       const results = document.querySelector("#matchResults");
+
+      function renderGuideCards() {
+        guideGrid.innerHTML = guides
+          .map(
+            (guide) => `
+              <article class="guide">
+                <div class="guide-media">
+                  <img src="${guide.image}" alt="${guide.name}, student guide">
+                </div>
+                <div class="guide-body">
+                  <span class="tag">${guide.name} / ${guide.school}</span>
+                  <h3>${guide.headline}</h3>
+                  <p>${guide.bio}</p>
+                  <div class="guide-meta">
+                    ${guide.tags.map((tag) => `<span class="pill">${tag}</span>`).join("")}
+                  </div>
+                  <div class="guide-stats">
+                    <div class="stat-card">
+                      <span>Rating</span>
+                      <strong>${guide.rating} / 5.0</strong>
+                    </div>
+                    <div class="stat-card">
+                      <span>Average delay</span>
+                      <strong>${guide.averageDelay}</strong>
+                    </div>
+                  </div>
+                  <div class="price-box" aria-label="${guide.name} guide pricing">
+                    <div class="price-item">
+                      <span>3 hours</span>
+                      <strong>${guide.prices[3].jpy}</strong>
+                      <em class="price-usd">approx. ${guide.prices[3].usd}</em>
+                    </div>
+                    <div class="price-item">
+                      <span>5 hours</span>
+                      <strong>${guide.prices[5].jpy}</strong>
+                      <em class="price-usd">approx. ${guide.prices[5].usd}</em>
+                    </div>
+                    <div class="price-item">
+                      <span>Full day</span>
+                      <strong>${guide.prices[7].jpy}</strong>
+                      <em class="price-usd">approx. ${guide.prices[7].usd}</em>
+                    </div>
+                  </div>
+                  <div class="review-box">
+                    <div class="rating">
+                      <span>${guide.rating} / 5.0</span>
+                      <span class="review-count">${guide.reviewCount} reviews</span>
+                    </div>
+                    <blockquote>"${guide.review}"</blockquote>
+                    <cite>${guide.reviewer}</cite>
+                  </div>
+                </div>
+              </article>
+            `
+          )
+          .join("");
+      }
 
       function selectedInterests() {
         return Array.from(form.querySelectorAll("input[name='interest']:checked"))
@@ -1019,7 +1328,17 @@
                   <span class="score">${score}% match</span>
                   <h3>${guide.name} / ${guide.school}</h3>
                   <div class="result-price">
-                    ${guide.prices[length]} <span>${length}-hour tour</span>
+                    ${guide.prices[length].jpy}
+                    <span class="usd-price">approx. ${guide.prices[length].usd}</span>
+                    <span>${length}-hour tour</span>
+                  </div>
+                  <div class="result-review">
+                    <span>${guide.rating} / 5.0 from ${guide.reviewCount} reviews</span>
+                    "${guide.review}" - ${guide.reviewer}
+                  </div>
+                  <div class="result-stats">
+                    <span>Average delay: ${guide.averageDelay}</span>
+                    <span>${guide.areas.length} local areas</span>
                   </div>
                   <p>${guide.bio}</p>
                   <p><strong>Suggested ${length}-hour plan:</strong> ${guide.route}</p>
@@ -1054,6 +1373,8 @@
 
         renderMatches(matches, visitorName, length);
       });
+
+      renderGuideCards();
     </script>
   </body>
 </html>
