@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="A stylish Japan travel guide for international visitors."
+      content="Match with Japanese university student guides for local Tokyo tours."
     >
-    <title>Japan Drift Guide</title>
+    <title>Campus Local Tokyo</title>
     <style>
       :root {
         color-scheme: light;
-        --ink: #18212f;
+        --ink: #17212b;
         --muted: #667085;
-        --paper: #f6f3ee;
+        --paper: #f4f0e8;
         --surface: #ffffff;
-        --line: #ded7cb;
-        --red: #c7362f;
+        --line: #d8d0c4;
+        --navy: #13233a;
+        --red: #d64032;
         --teal: #007c78;
-        --gold: #c98b2b;
+        --yellow: #f2b84b;
+        --shadow: 0 24px 60px rgba(19, 35, 58, 0.16);
       }
 
       * {
@@ -57,7 +59,7 @@
 
       .site-header {
         position: fixed;
-        z-index: 10;
+        z-index: 20;
         top: 0;
         left: 0;
         right: 0;
@@ -69,15 +71,16 @@
         color: #ffffff;
         background: linear-gradient(
           to bottom,
-          rgba(7, 13, 22, 0.74),
-          rgba(7, 13, 22, 0)
+          rgba(12, 20, 32, 0.82),
+          rgba(12, 20, 32, 0)
         );
       }
 
       .logo {
         font-size: 0.92rem;
-        font-weight: 800;
+        font-weight: 900;
         letter-spacing: 0.08em;
+        text-decoration: none;
         text-transform: uppercase;
       }
 
@@ -86,12 +89,12 @@
         align-items: center;
         gap: clamp(14px, 3vw, 30px);
         font-size: 0.9rem;
-        font-weight: 700;
+        font-weight: 800;
       }
 
       .nav a {
         text-decoration: none;
-        opacity: 0.9;
+        opacity: 0.88;
       }
 
       .nav a:hover {
@@ -99,24 +102,24 @@
       }
 
       .hero {
-        min-height: 92vh;
+        min-height: 94vh;
         display: grid;
         align-items: end;
-        padding: 112px clamp(20px, 5vw, 64px) 56px;
+        padding: 118px clamp(20px, 5vw, 64px) 56px;
         color: #ffffff;
         background:
           linear-gradient(
             90deg,
-            rgba(5, 9, 17, 0.82) 0%,
-            rgba(5, 9, 17, 0.42) 52%,
-            rgba(5, 9, 17, 0.12) 100%
+            rgba(8, 14, 24, 0.9) 0%,
+            rgba(8, 14, 24, 0.58) 52%,
+            rgba(8, 14, 24, 0.1) 100%
           ),
-          url("https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1800&q=80")
+          url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1800&q=80")
             center / cover;
       }
 
       .hero-inner {
-        width: min(100%, 980px);
+        width: min(100%, 1040px);
       }
 
       .kicker {
@@ -124,8 +127,8 @@
         align-items: center;
         gap: 10px;
         margin: 0 0 18px;
-        font-size: 0.82rem;
-        font-weight: 800;
+        font-size: 0.78rem;
+        font-weight: 900;
         letter-spacing: 0.14em;
         text-transform: uppercase;
       }
@@ -145,18 +148,18 @@
       }
 
       h1 {
-        max-width: 820px;
+        max-width: 920px;
         margin-bottom: 22px;
-        font-size: clamp(3.4rem, 10vw, 7.8rem);
-        line-height: 0.92;
-        font-weight: 900;
+        font-size: clamp(3.1rem, 9vw, 7.2rem);
+        line-height: 0.94;
+        font-weight: 950;
       }
 
       .hero p {
-        max-width: 620px;
+        max-width: 680px;
         margin-bottom: 28px;
-        color: rgba(255, 255, 255, 0.86);
-        font-size: clamp(1rem, 2vw, 1.24rem);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: clamp(1rem, 2vw, 1.22rem);
       }
 
       .hero-actions {
@@ -171,17 +174,22 @@
         justify-content: center;
         min-height: 48px;
         padding: 0 20px;
-        border: 1px solid rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.58);
         border-radius: 999px;
         color: #ffffff;
         font-size: 0.92rem;
-        font-weight: 800;
+        font-weight: 900;
         text-decoration: none;
       }
 
       .button.primary {
         border-color: var(--red);
         background: var(--red);
+      }
+
+      .button.dark {
+        border-color: var(--navy);
+        background: var(--navy);
       }
 
       .section {
@@ -194,7 +202,7 @@
 
       .section-head {
         display: grid;
-        grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.45fr);
+        grid-template-columns: minmax(0, 0.78fr) minmax(260px, 0.44fr);
         gap: 32px;
         align-items: end;
         width: min(100%, 1180px);
@@ -203,9 +211,9 @@
 
       h2 {
         margin-bottom: 0;
-        font-size: clamp(2.1rem, 5vw, 4.5rem);
+        font-size: clamp(2.05rem, 5vw, 4.4rem);
         line-height: 1;
-        font-weight: 900;
+        font-weight: 950;
       }
 
       .section-head p {
@@ -213,7 +221,8 @@
         color: var(--muted);
       }
 
-      .cards {
+      .feature-grid,
+      .guide-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
@@ -221,19 +230,19 @@
         margin: 0 auto;
       }
 
-      .card {
-        overflow: hidden;
+      .feature,
+      .guide,
+      .match-panel,
+      .result-panel,
+      .step {
         background: var(--surface);
         border: 1px solid var(--line);
         border-radius: 8px;
       }
 
-      .card-media {
-        height: 270px;
-      }
-
-      .card-body {
-        padding: 22px;
+      .feature {
+        min-height: 230px;
+        padding: 24px;
       }
 
       .tag {
@@ -241,7 +250,7 @@
         margin-bottom: 12px;
         color: var(--teal);
         font-size: 0.76rem;
-        font-weight: 900;
+        font-weight: 950;
         letter-spacing: 0.1em;
         text-transform: uppercase;
       }
@@ -252,94 +261,213 @@
         line-height: 1.2;
       }
 
-      .card p,
-      .route p,
-      .tips li {
+      .feature p,
+      .guide p,
+      .step p,
+      .match-note,
+      .result-copy {
         color: var(--muted);
       }
 
-      .route-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 0.92fr) minmax(300px, 0.6fr);
-        gap: 28px;
-        width: min(100%, 1180px);
-        margin: 0 auto;
-      }
-
-      .route-image {
-        min-height: 520px;
+      .guide {
         overflow: hidden;
-        border-radius: 8px;
       }
 
-      .route-list {
-        display: grid;
-        gap: 14px;
+      .guide-media {
+        height: 300px;
       }
 
-      .route {
+      .guide-body {
         padding: 22px;
-        background: #ffffff;
-        border: 1px solid var(--line);
-        border-radius: 8px;
       }
 
-      .route strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--red);
+      .guide-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: #eef7f6;
+        color: var(--teal);
         font-size: 0.78rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
+        font-weight: 850;
       }
 
-      .route h3 {
-        margin-bottom: 6px;
-      }
-
-      .route p {
-        margin-bottom: 0;
-      }
-
-      .tips {
+      .match-layout {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
+        grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+        gap: 22px;
         width: min(100%, 1180px);
         margin: 0 auto;
-        padding: 0;
-        list-style: none;
       }
 
-      .tips li {
-        min-height: 172px;
-        padding: 22px;
-        background: #ffffff;
+      .match-panel,
+      .result-panel {
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .match-form {
+        display: grid;
+        gap: 16px;
+      }
+
+      label {
+        display: grid;
+        gap: 7px;
+        color: var(--ink);
+        font-size: 0.86rem;
+        font-weight: 850;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 46px;
+        padding: 11px 12px;
         border: 1px solid var(--line);
         border-radius: 8px;
+        background: #fffdf9;
+        color: var(--ink);
+        font: inherit;
       }
 
-      .tips span {
+      textarea {
+        min-height: 106px;
+        resize: vertical;
+      }
+
+      .check-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        padding: 9px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf9;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 750;
+      }
+
+      .check input {
+        width: 16px;
+        min-height: 16px;
+        accent-color: var(--red);
+      }
+
+      .match-note {
+        margin: 14px 0 0;
+        font-size: 0.88rem;
+      }
+
+      .result-panel {
+        display: grid;
+        align-content: start;
+        gap: 16px;
+      }
+
+      .result-card {
+        display: grid;
+        grid-template-columns: 86px minmax(0, 1fr);
+        gap: 16px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf9;
+      }
+
+      .avatar {
+        overflow: hidden;
+        width: 86px;
+        height: 86px;
+        border-radius: 8px;
+        background: #e6ded2;
+      }
+
+      .score {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 8px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: var(--yellow);
+        color: #3c2a08;
+        font-size: 0.78rem;
+        font-weight: 950;
+      }
+
+      .result-card h3 {
+        margin-bottom: 6px;
+      }
+
+      .result-card p {
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .mini-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .mini-tags span {
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: #eef2f6;
+        color: #405166;
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        width: min(100%, 1180px);
+        margin: 0 auto;
+      }
+
+      .step {
+        min-height: 210px;
+        padding: 24px;
+      }
+
+      .step-number {
         display: block;
-        margin-bottom: 12px;
-        color: var(--gold);
-        font-size: 1.65rem;
-        font-weight: 900;
+        margin-bottom: 20px;
+        color: var(--red);
+        font-size: 2rem;
+        font-weight: 950;
       }
 
       .cta {
-        min-height: 440px;
         display: grid;
-        align-items: center;
+        place-items: center;
+        min-height: 390px;
         padding: 80px clamp(20px, 5vw, 64px);
         color: #ffffff;
+        text-align: center;
         background:
-          linear-gradient(
-            90deg,
-            rgba(6, 10, 18, 0.78),
-            rgba(6, 10, 18, 0.28)
-          ),
-          url("https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1800&q=80")
+          linear-gradient(rgba(19, 35, 58, 0.76), rgba(19, 35, 58, 0.76)),
+          url("https://images.unsplash.com/photo-1554797589-7241bb691973?auto=format&fit=crop&w=1800&q=80")
             center / cover;
       }
 
@@ -353,8 +481,8 @@
 
       .cta p {
         margin-bottom: 0;
-        color: rgba(255, 255, 255, 0.84);
-        font-size: 1.12rem;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 1.1rem;
       }
 
       .site-footer {
@@ -363,31 +491,28 @@
         gap: 20px;
         padding: 28px clamp(20px, 5vw, 64px);
         color: #ffffff;
-        background: #141922;
+        background: #101927;
         font-size: 0.9rem;
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 940px) {
         .site-header {
           position: absolute;
         }
 
         .section-head,
-        .route-grid {
+        .match-layout {
           grid-template-columns: 1fr;
         }
 
-        .cards,
-        .tips {
+        .feature-grid,
+        .guide-grid,
+        .steps {
           grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .route-image {
-          min-height: 360px;
         }
       }
 
-      @media (max-width: 640px) {
+      @media (max-width: 660px) {
         .site-header {
           align-items: flex-start;
           flex-direction: column;
@@ -398,21 +523,27 @@
           width: 100%;
           justify-content: space-between;
           gap: 10px;
-          font-size: 0.82rem;
+          font-size: 0.8rem;
         }
 
         .hero {
-          min-height: 88vh;
-          padding-top: 128px;
+          min-height: 90vh;
+          padding-top: 136px;
         }
 
-        .cards,
-        .tips {
+        .feature-grid,
+        .guide-grid,
+        .steps,
+        .check-row {
           grid-template-columns: 1fr;
         }
 
-        .card-media {
-          height: 230px;
+        .guide-media {
+          height: 240px;
+        }
+
+        .result-card {
+          grid-template-columns: 1fr;
         }
 
         .site-footer {
@@ -423,185 +554,397 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="logo" href="#top">Japan Drift Guide</a>
+      <a class="logo" href="#top">Campus Local Tokyo</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#spots">Spots</a>
-        <a href="#route">Route</a>
-        <a href="#tips">Tips</a>
+        <a href="#about">About</a>
+        <a href="#guides">Guides</a>
+        <a href="#match">Match</a>
+        <a href="#flow">Flow</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero">
         <div class="hero-inner">
-          <p class="kicker">Tokyo, Kyoto, Nara, Osaka</p>
-          <h1>Move through Japan like you belong here.</h1>
+          <p class="kicker">Student-led Tokyo tours</p>
+          <h1>See Tokyo with a Japanese university student.</h1>
           <p>
-            A compact travel guide for international visitors who want classic
-            temples, late-night food streets, quiet gardens, and smooth local
-            movement without losing the thrill of discovery.
+            Match with friendly student guides around Tokyo, Yokohama, Kamakura,
+            and Kawagoe. Choose the vibe you want, then meet someone who knows
+            the local shortcuts, campus neighborhoods, food spots, and daily
+            culture that guidebooks miss.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#spots">Explore highlights</a>
-            <a class="button" href="#route">View 5-day route</a>
+            <a class="button primary" href="#match">Find my guide</a>
+            <a class="button" href="#guides">Meet students</a>
           </div>
         </div>
       </section>
 
-      <section class="section" id="spots">
+      <section class="section" id="about">
         <div class="section-head">
-          <h2>Essential stops with a sharp sense of place.</h2>
+          <h2>Local, casual, and built for real conversations.</h2>
           <p>
-            Start with places that give first-time travelers a strong visual
-            memory: neon streets, old capitals, sacred gates, and food alleys
-            built for wandering.
+            This is not a formal bus tour. It is a matching service concept for
+            international visitors who want to spend a few hours with a Japanese
+            university student and experience Tokyo like a local friend is
+            showing them around.
           </p>
         </div>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-media">
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="tag">Campus energy</span>
+            <h3>Guides close to your age.</h3>
+            <p>
+              Students can talk about daily life, pop culture, study, part-time
+              jobs, food, and what young people actually do in Tokyo.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="tag">Tokyo area</span>
+            <h3>Neighborhoods beyond the obvious.</h3>
+            <p>
+              Explore Shimokitazawa, Kichijoji, Yanaka, Yokohama, Kamakura, or
+              Kawagoe with someone who understands the rhythm of each place.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="tag">Flexible match</span>
+            <h3>Pick interests before the trip.</h3>
+            <p>
+              Food, anime, temples, shopping, nightlife, photography, or campus
+              life. The form below suggests students based on your travel style.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="guides">
+        <div class="section-head">
+          <h2>Meet the student guides.</h2>
+          <p>
+            Each guide has a different city rhythm. Choose someone based on the
+            neighborhoods, language support, and interests that fit your day.
+          </p>
+        </div>
+
+        <div class="guide-grid">
+          <article class="guide">
+            <div class="guide-media">
               <img
-                src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=900&q=80"
-                alt="Tokyo city lights and crosswalks at night"
+                src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=80"
+                alt="Japanese university student guide smiling outdoors"
               >
             </div>
-            <div class="card-body">
-              <span class="tag">Tokyo</span>
-              <h3>Neon districts, tiny bars, and design stores.</h3>
+            <div class="guide-body">
+              <span class="tag">Yui / Waseda</span>
+              <h3>Cafes, vintage shops, and campus culture.</h3>
               <p>
-                Mix Shibuya energy, Harajuku side streets, teamLab-style digital
-                art, and a quiet morning coffee in Yanaka.
+                Best for Shimokitazawa, Waseda, Kagurazaka, indie bookstores,
+                coffee stops, and relaxed English conversation.
               </p>
+              <div class="guide-meta">
+                <span class="pill">English</span>
+                <span class="pill">Cafe</span>
+                <span class="pill">Shopping</span>
+              </div>
             </div>
           </article>
 
-          <article class="card">
-            <div class="card-media">
+          <article class="guide">
+            <div class="guide-media">
               <img
-                src="https://images.unsplash.com/photo-1493997181344-712f2f19d87a?auto=format&fit=crop&w=900&q=80"
-                alt="Traditional Kyoto street with wooden buildings"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
+                alt="Japanese university student guide in the city"
               >
             </div>
-            <div class="card-body">
-              <span class="tag">Kyoto</span>
-              <h3>Temples, gardens, and lantern-lit lanes.</h3>
+            <div class="guide-body">
+              <span class="tag">Ren / Keio</span>
+              <h3>Food alleys, train tips, and night views.</h3>
               <p>
-                Begin early at Fushimi Inari, slow down in Higashiyama, then
-                finish with riverside dining near Pontocho.
+                Best for Shibuya, Ebisu, Yokohama, ramen counters, skyline
+                spots, and learning how Tokyo transit actually works.
               </p>
+              <div class="guide-meta">
+                <span class="pill">English</span>
+                <span class="pill">Food</span>
+                <span class="pill">Night</span>
+              </div>
             </div>
           </article>
 
-          <article class="card">
-            <div class="card-media">
+          <article class="guide">
+            <div class="guide-media">
               <img
-                src="https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?auto=format&fit=crop&w=900&q=80"
-                alt="Dotonbori canal and signs in Osaka"
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                alt="Japanese university student guide near a park"
               >
             </div>
-            <div class="card-body">
-              <span class="tag">Osaka</span>
-              <h3>Street food, comedy, and night color.</h3>
+            <div class="guide-body">
+              <span class="tag">Aoi / Meiji</span>
+              <h3>Temples, anime shops, and photo walks.</h3>
               <p>
-                Follow the smell of takoyaki through Dotonbori, then head to
-                Shinsekai for retro signs and casual local counters.
+                Best for Asakusa, Akihabara, Yanaka, Ueno, shrine manners,
+                character goods, and gentle Japanese phrase practice.
               </p>
+              <div class="guide-meta">
+                <span class="pill">English</span>
+                <span class="pill">Anime</span>
+                <span class="pill">Culture</span>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section alt" id="route">
+      <section class="section" id="match">
         <div class="section-head">
-          <h2>A clean 5-day first trip.</h2>
+          <h2>Match with a guide.</h2>
           <p>
-            This route keeps travel simple: arrive in Tokyo, move west by rail,
-            and leave enough space for spontaneous discoveries.
+            Tell us your travel style. This demo instantly suggests student
+            guides and a Tokyo-area plan. For a real launch, this form can be
+            connected to Google Forms, Airtable, Firebase, or a booking system.
           </p>
         </div>
 
-        <div class="route-grid">
-          <div class="route-image">
-            <img
-              src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1100&q=80"
-              alt="A Japanese train moving through a scenic area"
-            >
-          </div>
-          <div class="route-list">
-            <article class="route">
-              <strong>Day 01</strong>
-              <h3>Tokyo arrival</h3>
-              <p>Shibuya, Omotesando, and a low-pressure izakaya dinner.</p>
-            </article>
-            <article class="route">
-              <strong>Day 02</strong>
-              <h3>Tokyo contrasts</h3>
-              <p>Asakusa in the morning, Ueno museums, Shinjuku after dark.</p>
-            </article>
-            <article class="route">
-              <strong>Day 03</strong>
-              <h3>Kyoto by rail</h3>
-              <p>Fushimi Inari, Gion, and a quiet temple before sunset.</p>
-            </article>
-            <article class="route">
-              <strong>Day 04</strong>
-              <h3>Nara side trip</h3>
-              <p>Todai-ji, old town lanes, then return to Kyoto for dinner.</p>
-            </article>
-            <article class="route">
-              <strong>Day 05</strong>
-              <h3>Osaka finale</h3>
-              <p>Kuromon Market, Namba, Dotonbori, and one last bowl of ramen.</p>
-            </article>
-          </div>
+        <div class="match-layout">
+          <section class="match-panel" aria-labelledby="match-title">
+            <h3 id="match-title">Your trip request</h3>
+            <form class="match-form" id="matchForm">
+              <label>
+                Name
+                <input name="name" autocomplete="name" placeholder="Alex" required>
+              </label>
+
+              <label>
+                Preferred area
+                <select name="area">
+                  <option value="shibuya">Shibuya / Harajuku</option>
+                  <option value="asakusa">Asakusa / Ueno / Yanaka</option>
+                  <option value="yokohama">Yokohama</option>
+                  <option value="kamakura">Kamakura</option>
+                  <option value="kichijoji">Kichijoji / Shimokitazawa</option>
+                </select>
+              </label>
+
+              <label>
+                Tour length
+                <select name="length">
+                  <option value="3">3 hours</option>
+                  <option value="5">5 hours</option>
+                  <option value="7">Full day</option>
+                </select>
+              </label>
+
+              <label>
+                Interests
+                <span class="check-row">
+                  <span class="check">
+                    <input type="checkbox" name="interest" value="food" checked>
+                    Food
+                  </span>
+                  <span class="check">
+                    <input type="checkbox" name="interest" value="anime">
+                    Anime
+                  </span>
+                  <span class="check">
+                    <input type="checkbox" name="interest" value="shopping">
+                    Shopping
+                  </span>
+                  <span class="check">
+                    <input type="checkbox" name="interest" value="culture">
+                    Culture
+                  </span>
+                  <span class="check">
+                    <input type="checkbox" name="interest" value="photo">
+                    Photo walk
+                  </span>
+                  <span class="check">
+                    <input type="checkbox" name="interest" value="night">
+                    Night views
+                  </span>
+                </span>
+              </label>
+
+              <label>
+                Message to the student guide
+                <textarea
+                  name="message"
+                  placeholder="I want to try local food and learn simple Japanese phrases."
+                ></textarea>
+              </label>
+
+              <button class="button dark" type="submit">Show matching guides</button>
+            </form>
+            <p class="match-note">
+              Demo only: no personal data is sent to a server. The matching
+              result is calculated inside this page.
+            </p>
+          </section>
+
+          <section class="result-panel" aria-live="polite" aria-labelledby="result-title">
+            <h3 id="result-title">Recommended matches</h3>
+            <p class="result-copy" id="resultCopy">
+              Submit the form to see student guides, match scores, and a sample
+              route around Tokyo.
+            </p>
+            <div id="matchResults"></div>
+          </section>
         </div>
       </section>
 
-      <section class="section" id="tips">
+      <section class="section alt" id="flow">
         <div class="section-head">
-          <h2>Move smoothly.</h2>
+          <h2>How the matching works.</h2>
           <p>
-            A few local habits make the whole trip easier, especially during
-            train transfers, restaurant visits, and temple walks.
+            Keep the experience simple for both sides: visitors explain what
+            they want, students confirm availability, and both can chat before
+            meeting in a public station area.
           </p>
         </div>
 
-        <ol class="tips">
-          <li>
-            <span>01</span>
-            Use a transit IC card for trains, buses, lockers, and many shops.
-          </li>
-          <li>
-            <span>02</span>
-            Keep conversations quiet on trains and avoid phone calls onboard.
-          </li>
-          <li>
-            <span>03</span>
-            Carry a small bag for trash until you find a station bin.
-          </li>
-          <li>
-            <span>04</span>
-            Book popular restaurants early, then leave room for walk-in counters.
-          </li>
-        </ol>
+        <div class="steps">
+          <article class="step">
+            <span class="step-number">01</span>
+            <h3>Visitor sends a request</h3>
+            <p>
+              Area, date, tour length, interests, language level, and travel
+              notes are collected before introducing student guides.
+            </p>
+          </article>
+          <article class="step">
+            <span class="step-number">02</span>
+            <h3>Students receive matches</h3>
+            <p>
+              Guides are ranked by interests, neighborhood knowledge, language,
+              and availability. The visitor can choose who feels right.
+            </p>
+          </article>
+          <article class="step">
+            <span class="step-number">03</span>
+            <h3>Meet safely in Tokyo</h3>
+            <p>
+              Meet at a major station, confirm the route, enjoy the tour, and
+              leave reviews so future matches become more accurate.
+            </p>
+          </article>
+        </div>
       </section>
 
-      <section class="cta" aria-label="Travel mood">
+      <section class="cta" aria-label="Service promise">
         <div class="cta-inner">
-          <p class="kicker">Designed for first-time visitors</p>
-          <h2>Less confusion. More Japan.</h2>
+          <p class="kicker">Tokyo through student eyes</p>
+          <h2>A local friend for your first day in the city.</h2>
           <p>
-            Keep the route simple, protect your mornings, and let each city show
-            a different rhythm: polished, historic, playful, and unforgettable.
+            From Shibuya crossings to quiet campus streets, Campus Local Tokyo
+            helps travelers find someone who can translate the city into real
+            human moments.
           </p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>Japan Drift Guide</span>
-      <span>Built for GitHub Pages</span>
+      <span>Campus Local Tokyo</span>
+      <span>Student guide matching for Tokyo visitors</span>
     </footer>
+
+    <script>
+      const guides = [
+        {
+          name: "Yui",
+          school: "Waseda University",
+          image:
+            "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80",
+          areas: ["kichijoji", "shibuya", "asakusa"],
+          interests: ["shopping", "culture", "photo"],
+          route: "Shimokitazawa vintage shops, Waseda campus, Kagurazaka cafes",
+          bio: "Relaxed conversation, coffee stops, bookstores, and everyday student life."
+        },
+        {
+          name: "Ren",
+          school: "Keio University",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+          areas: ["shibuya", "yokohama"],
+          interests: ["food", "night", "shopping"],
+          route: "Shibuya backstreets, Ebisu food counters, Yokohama night view",
+          bio: "Food-focused routes, train confidence, and casual nightlife."
+        },
+        {
+          name: "Aoi",
+          school: "Meiji University",
+          image:
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
+          areas: ["asakusa", "kamakura", "shibuya"],
+          interests: ["anime", "culture", "photo"],
+          route: "Asakusa temple walk, Akihabara shops, Yanaka old-town lanes",
+          bio: "Anime, shrine etiquette, simple Japanese phrases, and photo spots."
+        }
+      ];
+
+      const form = document.querySelector("#matchForm");
+      const resultCopy = document.querySelector("#resultCopy");
+      const results = document.querySelector("#matchResults");
+
+      function selectedInterests() {
+        return Array.from(form.querySelectorAll("input[name='interest']:checked"))
+          .map((input) => input.value);
+      }
+
+      function scoreGuide(guide, area, interests) {
+        let score = guide.areas.includes(area) ? 58 : 38;
+        score += interests.filter((interest) =>
+          guide.interests.includes(interest)
+        ).length * 14;
+        return Math.min(score, 98);
+      }
+
+      function renderMatches(matches, visitorName, length) {
+        results.innerHTML = matches
+          .map(
+            ({ guide, score }) => `
+              <article class="result-card">
+                <div class="avatar">
+                  <img src="${guide.image}" alt="${guide.name}, student guide">
+                </div>
+                <div>
+                  <span class="score">${score}% match</span>
+                  <h3>${guide.name} / ${guide.school}</h3>
+                  <p>${guide.bio}</p>
+                  <p><strong>Suggested ${length}-hour plan:</strong> ${guide.route}</p>
+                  <div class="mini-tags">
+                    ${guide.interests.map((interest) => `<span>${interest}</span>`).join("")}
+                  </div>
+                </div>
+              </article>
+            `
+          )
+          .join("");
+
+        resultCopy.textContent =
+          `${visitorName || "Your"} request is ready. These student guides are ranked by area and interest fit.`;
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const area = formData.get("area");
+        const length = formData.get("length");
+        const visitorName = formData.get("name");
+        const interests = selectedInterests(formData);
+
+        const matches = guides
+          .map((guide) => ({
+            guide,
+            score: scoreGuide(guide, area, interests)
+          }))
+          .sort((a, b) => b.score - a.score);
+
+        renderMatches(matches, visitorName, length);
+      });
+    </script>
   </body>
 </html>
