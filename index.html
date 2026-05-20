@@ -288,6 +288,35 @@
         margin-top: 18px;
       }
 
+      .price-box {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .price-item {
+        padding: 10px;
+        border-radius: 8px;
+        background: #fff8ec;
+      }
+
+      .price-item span {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 850;
+      }
+
+      .price-item strong {
+        color: var(--navy);
+        font-size: 0.96rem;
+        font-weight: 950;
+      }
+
       .pill {
         display: inline-flex;
         align-items: center;
@@ -410,6 +439,22 @@
         color: #3c2a08;
         font-size: 0.78rem;
         font-weight: 950;
+      }
+
+      .result-price {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 10px;
+        color: var(--navy);
+        font-size: 1.12rem;
+        font-weight: 950;
+      }
+
+      .result-price span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
       }
 
       .result-card h3 {
@@ -542,6 +587,10 @@
           height: 240px;
         }
 
+        .price-box {
+          grid-template-columns: 1fr;
+        }
+
         .result-card {
           grid-template-columns: 1fr;
         }
@@ -649,6 +698,20 @@
                 <span class="pill">Cafe</span>
                 <span class="pill">Shopping</span>
               </div>
+              <div class="price-box" aria-label="Yui guide pricing">
+                <div class="price-item">
+                  <span>3 hours</span>
+                  <strong>¥6,000</strong>
+                </div>
+                <div class="price-item">
+                  <span>5 hours</span>
+                  <strong>¥9,000</strong>
+                </div>
+                <div class="price-item">
+                  <span>Full day</span>
+                  <strong>¥13,000</strong>
+                </div>
+              </div>
             </div>
           </article>
 
@@ -671,6 +734,20 @@
                 <span class="pill">Food</span>
                 <span class="pill">Night</span>
               </div>
+              <div class="price-box" aria-label="Ren guide pricing">
+                <div class="price-item">
+                  <span>3 hours</span>
+                  <strong>¥7,000</strong>
+                </div>
+                <div class="price-item">
+                  <span>5 hours</span>
+                  <strong>¥10,000</strong>
+                </div>
+                <div class="price-item">
+                  <span>Full day</span>
+                  <strong>¥14,000</strong>
+                </div>
+              </div>
             </div>
           </article>
 
@@ -692,6 +769,20 @@
                 <span class="pill">English</span>
                 <span class="pill">Anime</span>
                 <span class="pill">Culture</span>
+              </div>
+              <div class="price-box" aria-label="Aoi guide pricing">
+                <div class="price-item">
+                  <span>3 hours</span>
+                  <strong>¥6,500</strong>
+                </div>
+                <div class="price-item">
+                  <span>5 hours</span>
+                  <strong>¥9,500</strong>
+                </div>
+                <div class="price-item">
+                  <span>Full day</span>
+                  <strong>¥13,500</strong>
+                </div>
               </div>
             </div>
           </article>
@@ -859,6 +950,11 @@
             "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80",
           areas: ["kichijoji", "shibuya", "asakusa"],
           interests: ["shopping", "culture", "photo"],
+          prices: {
+            3: "¥6,000",
+            5: "¥9,000",
+            7: "¥13,000"
+          },
           route: "Shimokitazawa vintage shops, Waseda campus, Kagurazaka cafes",
           bio: "Relaxed conversation, coffee stops, bookstores, and everyday student life."
         },
@@ -869,6 +965,11 @@
             "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
           areas: ["shibuya", "yokohama"],
           interests: ["food", "night", "shopping"],
+          prices: {
+            3: "¥7,000",
+            5: "¥10,000",
+            7: "¥14,000"
+          },
           route: "Shibuya backstreets, Ebisu food counters, Yokohama night view",
           bio: "Food-focused routes, train confidence, and casual nightlife."
         },
@@ -879,6 +980,11 @@
             "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
           areas: ["asakusa", "kamakura", "shibuya"],
           interests: ["anime", "culture", "photo"],
+          prices: {
+            3: "¥6,500",
+            5: "¥9,500",
+            7: "¥13,500"
+          },
           route: "Asakusa temple walk, Akihabara shops, Yanaka old-town lanes",
           bio: "Anime, shrine etiquette, simple Japanese phrases, and photo spots."
         }
@@ -912,6 +1018,9 @@
                 <div>
                   <span class="score">${score}% match</span>
                   <h3>${guide.name} / ${guide.school}</h3>
+                  <div class="result-price">
+                    ${guide.prices[length]} <span>${length}-hour tour</span>
+                  </div>
                   <p>${guide.bio}</p>
                   <p><strong>Suggested ${length}-hour plan:</strong> ${guide.route}</p>
                   <div class="mini-tags">
