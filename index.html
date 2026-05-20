@@ -86,7 +86,9 @@
 
       .nav {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
+        justify-content: flex-end;
         gap: clamp(14px, 3vw, 30px);
         font-size: 0.9rem;
         font-weight: 800;
@@ -619,6 +621,55 @@
         font-weight: 950;
       }
 
+      .company-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        width: min(100%, 1180px);
+        margin: 0 auto;
+      }
+
+      .company-card {
+        min-height: 260px;
+        padding: 24px;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .company-card p {
+        color: var(--muted);
+      }
+
+      .text-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 8px;
+        color: var(--teal);
+        font-size: 0.9rem;
+        font-weight: 950;
+        text-decoration: none;
+      }
+
+      .service-list {
+        display: grid;
+        gap: 8px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .service-list a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: #eef7f6;
+        color: var(--teal);
+        font-size: 0.88rem;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
       .cta {
         display: grid;
         place-items: center;
@@ -647,13 +698,26 @@
       }
 
       .site-footer {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
         gap: 20px;
         padding: 28px clamp(20px, 5vw, 64px);
         color: #ffffff;
         background: #101927;
         font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px 20px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.82);
+        font-weight: 800;
+        text-decoration: none;
       }
 
       @media (max-width: 940px) {
@@ -668,7 +732,8 @@
 
         .feature-grid,
         .guide-grid,
-        .steps {
+        .steps,
+        .company-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
@@ -682,7 +747,7 @@
 
         .nav {
           width: 100%;
-          justify-content: space-between;
+          justify-content: flex-start;
           gap: 10px;
           font-size: 0.8rem;
         }
@@ -695,7 +760,8 @@
         .feature-grid,
         .guide-grid,
         .steps,
-        .check-row {
+        .check-row,
+        .company-grid {
           grid-template-columns: 1fr;
         }
 
@@ -716,7 +782,11 @@
         }
 
         .site-footer {
-          flex-direction: column;
+          grid-template-columns: 1fr;
+        }
+
+        .footer-links {
+          justify-content: flex-start;
         }
       }
     </style>
@@ -729,6 +799,8 @@
         <a href="#guides">Guides</a>
         <a href="#match">Match</a>
         <a href="#flow">Flow</a>
+        <a href="#company">Company</a>
+        <a href="#support">Support</a>
       </nav>
     </header>
 
@@ -935,6 +1007,57 @@
         </div>
       </section>
 
+      <section class="section" id="company">
+        <div class="section-head">
+          <h2>Company information.</h2>
+          <p>
+            Campus Local Tokyo is designed as a student guide matching service
+            that connects international visitors with trained Japanese
+            university students in the Tokyo area.
+          </p>
+        </div>
+
+        <div class="company-grid">
+          <article class="company-card" id="founding">
+            <span class="tag">Founded for travelers</span>
+            <h3>Why the company was created.</h3>
+            <p>
+              The service was founded to make first-time Tokyo travel more
+              human, local, and less intimidating. Instead of only offering fixed
+              sightseeing routes, Campus Local Tokyo focuses on conversations,
+              student perspectives, and flexible neighborhood walks.
+            </p>
+            <a class="text-link" href="#match">Start a guide request</a>
+          </article>
+
+          <article class="company-card" id="philosophy">
+            <span class="tag">Philosophy</span>
+            <h3>Local friendship, clear trust.</h3>
+            <p>
+              Our mission is to create safe, friendly cultural exchange.
+              Visitors should feel welcome, and student guides should be treated
+              fairly for their time, language ability, and local knowledge.
+            </p>
+            <a class="text-link" href="#guides">View student guides</a>
+          </article>
+
+          <article class="company-card" id="support">
+            <span class="tag">Customer service</span>
+            <h3>Help before and after the tour.</h3>
+            <p>
+              Customer support covers matching questions, meeting point changes,
+              guide communication, refunds, safety reports, and post-tour review
+              follow-up.
+            </p>
+            <ul class="service-list">
+              <li><a href="mailto:support@campuslocaltokyo.example">Email support</a></li>
+              <li><a href="#match">Change a booking request</a></li>
+              <li><a href="#flow">Read matching steps</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section class="cta" aria-label="Service promise">
         <div class="cta-inner">
           <p class="kicker">Tokyo through student eyes</p>
@@ -949,8 +1072,17 @@
     </main>
 
     <footer class="site-footer">
-      <span>Campus Local Tokyo</span>
-      <span>Student guide matching for Tokyo visitors</span>
+      <div>
+        <strong>Campus Local Tokyo</strong>
+        <br>
+        <span>Student guide matching for Tokyo visitors</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#founding">Company founding</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#support">Customer service</a>
+        <a href="#match">Book a guide</a>
+      </nav>
     </footer>
 
     <script>
