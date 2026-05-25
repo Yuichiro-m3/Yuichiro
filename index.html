@@ -125,6 +125,7 @@
         opacity: 1;
       }
 
+      /* Advanced Sakura & Sumo System */
       .hero {
         min-height: 94vh;
         display: grid;
@@ -144,24 +145,74 @@
         overflow: hidden;
       }
 
-      @keyframes petal-fall {
-        0% { transform: translateY(-10vh) translateX(0) rotate(0); opacity: 0; }
-        10% { opacity: 0.8; }
-        90% { opacity: 0.8; }
-        100% { transform: translateY(110vh) translateX(100px) rotate(720deg); opacity: 0; }
+      #sakura-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
       }
 
       .petal {
         position: absolute;
-        top: -10vh;
         background: #ffe6e6;
         border-radius: 150% 0 150% 0;
-        width: 15px;
-        height: 15px;
         opacity: 0.8;
         pointer-events: none;
-        z-index: 1;
-        animation: petal-fall 10s linear infinite;
+      }
+
+      .petal.falling {
+        animation: petal-fall linear forwards;
+      }
+
+      @keyframes petal-fall {
+        0% { transform: translateY(-10vh) rotate(0); }
+        100% { transform: translateY(var(--fall-distance)) rotate(var(--fall-rotation)); }
+      }
+
+      #sakura-pile {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0px;
+        background: linear-gradient(to top, #ffe6e6, transparent);
+        opacity: 0.6;
+        transition: height 0.5s ease;
+        z-index: 2;
+      }
+
+      #sumo-rikishi {
+        position: absolute;
+        bottom: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 150px;
+        z-index: 10;
+        transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+      }
+
+      #sumo-rikishi.active {
+        bottom: 20px;
+      }
+
+      .sumo-svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      @keyframes sumo-throw {
+        0% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.1) translateY(-20px); }
+        100% { transform: translateX(-50%) scale(1); }
+      }
+
+      #sumo-rikishi.throwing {
+        animation: sumo-throw 0.5s ease;
       }
 
       .hero::after {
@@ -1090,11 +1141,18 @@
 
     <main id="top">
       <section class="hero">
-        <div class="petal" style="left: 10%; animation-delay: 0s;"></div>
-        <div class="petal" style="left: 30%; animation-delay: 2s; width: 10px; height: 10px;"></div>
-        <div class="petal" style="left: 50%; animation-delay: 4s;"></div>
-        <div class="petal" style="left: 70%; animation-delay: 6s; width: 12px; height: 12px;"></div>
-        <div class="petal" style="left: 90%; animation-delay: 8s;"></div>
+        <div id="sakura-container"></div>
+        <div id="sakura-pile"></div>
+        <div id="sumo-rikishi">
+          <!-- Sumo Rikishi SVG -->
+          <svg class="sumo-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="40" r="15" fill="#f5d0c0" /> <!-- Head -->
+            <path d="M35 55 Q50 45 65 55 L70 85 Q50 95 30 85 Z" fill="#e0c0b0" /> <!-- Body -->
+            <path d="M40 25 L60 25 L55 15 L45 15 Z" fill="#000" /> <!-- Topknot -->
+            <rect x="30" y="80" width="40" height="10" fill="#000" /> <!-- Mawashi -->
+            <path d="M50 35 L45 45 L55 45 Z" fill="#000" /> <!-- Eyes/Face -->
+          </svg>
+        </div>
         <div class="hero-inner">
           <p class="kicker">
             <span style="border: 1px solid currentColor; padding: 2px 6px; border-radius: 2px; margin-right: 10px; font-size: 0.6rem; vertical-align: middle;">立夏</span>
@@ -1934,6 +1992,88 @@
 
         renderMatches(matches, visitorName, length);
       });
+
+      // Advanced Sakura & Sumo Interaction
+      const sakuraContainer = document.getElementById('sakura-container');
+      const sakuraPile = document.getElementById('sakura-pile');
+      const rikishi = document.getElementById('sumo-rikishi');
+      let pileHeight = 0;
+      let isSumoActive = false;
+
+      function createPetal() {
+        if (isSumoActive) return;
+
+        const petal = document.createElement('div');
+        petal.className = 'petal falling';
+        
+        const size = Math.random() * 10 + 10;
+        const left = Math.random() * 100;
+        const duration = Math.random() * 5 + 5;
+        const delay = Math.random() * 5;
+        
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size}px`;
+        petal.style.left = `${left}%`;
+        petal.style.animationDuration = `${duration}s`;
+        petal.style.animationDelay = `${delay}s`;
+        
+        // Custom variables for animation
+        const fallDistance = '110vh';
+        const fallRotation = `${Math.random() * 720}deg`;
+        petal.style.setProperty('--fall-distance', fallDistance);
+        petal.style.setProperty('--fall-rotation', fallRotation);
+
+        sakuraContainer.appendChild(petal);
+
+        // When animation ends, increment pile
+        petal.addEventListener('animationend', () => {
+          petal.remove();
+          incrementPile();
+        });
+      }
+
+      function incrementPile() {
+        if (isSumoActive) return;
+
+        pileHeight += 0.5;
+        sakuraPile.style.height = `${pileHeight}px`;
+
+        if (pileHeight > 60 && !isSumoActive) {
+          triggerSumo();
+        }
+      }
+
+      function triggerSumo() {
+        isSumoActive = true;
+        rikishi.classList.add('active');
+
+        setTimeout(() => {
+          rikishi.classList.add('throwing');
+          
+          // Flash effect when sumo throws
+          sakuraPile.style.transition = 'height 0.3s ease-out, opacity 0.3s ease-out';
+          sakuraPile.style.height = '100vh';
+          sakuraPile.style.opacity = '0';
+
+          setTimeout(() => {
+            // Reset everything
+            pileHeight = 0;
+            sakuraPile.style.transition = 'height 0.5s ease';
+            sakuraPile.style.height = '0px';
+            sakuraPile.style.opacity = '0.6';
+            
+            rikishi.classList.remove('throwing');
+            rikishi.classList.remove('active');
+            
+            setTimeout(() => {
+              isSumoActive = false;
+            }, 1000);
+          }, 400);
+        }, 1500);
+      }
+
+      // Spawn petals continuously
+      setInterval(createPetal, 200);
 
       renderGuideCards();
     </script>
