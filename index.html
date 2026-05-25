@@ -211,8 +211,105 @@
         100% { transform: translateX(-50%) scale(1); }
       }
 
-      #sumo-rikishi.throwing {
-        animation: sumo-throw 0.5s ease;
+      /* Sumo Navigator Style */
+      #sumo-guide-trigger {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+        background: var(--red);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 900;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(164, 0, 53, 0.4);
+        transition: transform 0.2s, background 0.2s;
+        font-size: 0.8rem;
+      }
+
+      #sumo-guide-trigger:hover {
+        transform: scale(1.05);
+        background: #8e002c;
+      }
+
+      #sumo-navigator {
+        position: fixed;
+        bottom: 100px;
+        right: 40px;
+        width: 120px;
+        height: 120px;
+        z-index: 99;
+        display: none;
+        pointer-events: none;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+      }
+
+      #sumo-navigator.active {
+        display: block;
+        animation: sumo-bounce 0.5s ease infinite alternate;
+      }
+
+      @keyframes sumo-bounce {
+        from { transform: translateY(0); }
+        to { transform: translateY(-10px); }
+      }
+
+      #sumo-bubble {
+        position: fixed;
+        bottom: 220px;
+        right: 40px;
+        width: 260px;
+        background: white;
+        border: 3px solid #000;
+        padding: 20px;
+        border-radius: 20px;
+        z-index: 101;
+        display: none;
+        font-weight: 800;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+      }
+
+      #sumo-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        right: 40px;
+        border-width: 20px 20px 0 0;
+        border-style: solid;
+        border-color: #000 transparent transparent transparent;
+      }
+
+      .bubble-nav {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: auto;
+      }
+
+      .bubble-btn {
+        background: #eee;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 5px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .bubble-btn.next {
+        background: var(--red);
+        color: white;
+      }
+
+      @media (max-width: 600px) {
+        #sumo-bubble { width: calc(100% - 40px); left: 20px; right: 20px; }
       }
 
       .hero::after {
@@ -1126,6 +1223,29 @@
     </style>
   </head>
   <body>
+    <button id="sumo-guide-trigger">
+      <span style="font-size: 1.2rem;">🏯</span>
+      Site Tour
+    </button>
+
+    <div id="sumo-navigator">
+      <svg class="sumo-svg" viewBox="0 0 100 100">
+        <circle cx="50" cy="40" r="15" fill="#f5d0c0" />
+        <path d="M35 55 Q50 45 65 55 L70 85 Q50 95 30 85 Z" fill="#e0c0b0" />
+        <path d="M40 25 L60 25 L55 15 L45 15 Z" fill="#000" />
+        <rect x="30" y="80" width="40" height="10" fill="#000" />
+        <path d="M50 35 L45 45 L55 45 Z" fill="#000" />
+      </svg>
+    </div>
+
+    <div id="sumo-bubble">
+      <div id="sumo-text"></div>
+      <div class="bubble-nav">
+        <button class="bubble-btn" id="sumo-prev">Back</button>
+        <button class="bubble-btn next" id="sumo-next">Next</button>
+      </div>
+    </div>
+
     <header class="site-header">
       <a class="logo" href="#top">GUIDE MATCH</a>
       <nav class="nav" aria-label="Main navigation">
@@ -1991,6 +2111,91 @@
           .sort((a, b) => b.score - a.score);
 
         renderMatches(matches, visitorName, length);
+      });
+
+      // Sumo Tour Logic
+      const tourTrigger = document.getElementById('sumo-guide-trigger');
+      const sumoNav = document.getElementById('sumo-navigator');
+      const sumoBubble = document.getElementById('sumo-bubble');
+      const sumoText = document.getElementById('sumo-text');
+      const nextBtn = document.getElementById('sumo-next');
+      const prevBtn = document.getElementById('sumo-prev');
+
+      const tourSteps = [
+        { 
+          id: 'top', 
+          msg: 'どすこい！私がサイトを案内するぞ。まずはここ、GUIDE MATCHの入り口だ！' 
+        },
+        { 
+          id: 'about', 
+          msg: 'ここは「About」。我々の思いが詰まっている場所だ。じっくり読んでくれ！' 
+        },
+        { 
+          id: 'features', 
+          msg: 'このサービスの「強み」を紹介しているぞ。学生ならではの視点が自慢だ。' 
+        },
+        { 
+          id: 'guides', 
+          msg: '自慢の学生ガイドたちだ！15人もいるから、君にぴったりの相手が見つかるはずだ。' 
+        },
+        { 
+          id: 'match', 
+          msg: 'ここが重要だ！自分の好みを入力して、相性の良いガイドを探してみてくれ。' 
+        },
+        { 
+          id: 'flow', 
+          msg: '使い方は簡単、3ステップだ。迷うことはないぞ！' 
+        },
+        { 
+          id: 'faq', 
+          msg: '最後にQ&Aだ。疑問があればここを見てくれ。なければ案内は終了だ！' 
+        }
+      ];
+
+      let currentStep = -1;
+
+      function updateTour() {
+        if (currentStep < 0) {
+          sumoNav.classList.remove('active');
+          sumoBubble.style.display = 'none';
+          tourTrigger.style.display = 'flex';
+          return;
+        }
+
+        const step = tourSteps[currentStep];
+        const targetSection = document.getElementById(step.id);
+        
+        sumoNav.classList.add('active');
+        sumoBubble.style.display = 'block';
+        tourTrigger.style.display = 'none';
+        sumoText.innerText = step.msg;
+
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+        nextBtn.innerText = currentStep === tourSteps.length - 1 ? 'Finish' : 'Next';
+      }
+
+      tourTrigger.addEventListener('click', () => {
+        currentStep = 0;
+        updateTour();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentStep < tourSteps.length - 1) {
+          currentStep++;
+          updateTour();
+        } else {
+          currentStep = -1;
+          updateTour();
+        }
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateTour();
+        }
       });
 
       // Advanced Sakura & Sumo Interaction
