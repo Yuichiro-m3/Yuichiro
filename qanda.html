@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Q&A | GUIDE MATCH</title>
+</head>
+
+<body style="margin:0; background-color:#f4f0e8;">
+
+<!-- Q&A Section Start -->
+<div class="gm-qa-container">
+  <style>
+    .gm-qa-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #17212b;
+      line-height: 1.6;
+    }
+
+    .gm-qa-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .gm-qa-header h2 {
+      font-size: 2.2rem;
+      font-weight: 950;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .gm-qa-header p {
+      color: #667085;
+      font-weight: 500;
+    }
+
+    .gm-qa-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .gm-qa-item {
+      background: #ffffff;
+      border: 1px solid #d8d0c4;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(19, 35, 58, 0.04);
+    }
+
+    .gm-qa-question {
+      font-weight: 850;
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: #13233a;
+    }
+
+    .gm-qa-question::before {
+      content: "Q";
+      display: inline-grid;
+      place-items: center;
+      min-width: 32px;
+      height: 32px;
+      background: #17212b;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .gm-qa-answer {
+      color: #475467;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 1.05rem;
+    }
+
+    .gm-qa-answer::before {
+      content: "A";
+      display: inline-block;
+      min-width: 32px;
+      text-align: center;
+      font-weight: 950;
+      color: #d64032;
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .gm-qa-header h2 { font-size: 1.8rem; }
+      .gm-qa-item { padding: 20px; }
+    }
+  </style>
+
+  <div class="gm-qa-header">
+    <h2>Frequently Asked Questions</h2>
+    <p>GUIDE MATCHに関するよくある質問と回答をまとめました。</p>
+  </div>
+
+  <div class="gm-qa-list">
+
+    <!-- 1 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">学生ガイドはどのような人たちですか？</div>
+      <div class="gm-qa-answer">東京都近郊に住む現役の大学生です。地域の知識が豊富で、文化交流に意欲的な学生を厳選しています。</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">予約はいつまでにすればいいですか？</div>
+      <div class="gm-qa-answer">マッチングの精度を高めるため、ツアー実施の3日前までにご予約いただくことをお勧めしています。</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">支払方法を教えてください。</div>
+      <div class="gm-qa-answer">現在は各種クレジットカード決済に対応しています。予約確定時にオンライン上で安全にお支払いいただけます。</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">観光地の入場料や交通費はどうなりますか？</div>
+      <div class="gm-qa-answer">お客様ご自身と、同行するガイドの交通費・入場料・食事代はお客様の負担となります。ツアー中にその都度お支払いください。</div>
+    </div>
+
+    <!-- 5 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">英語以外の言語も対応していますか？</div>
+      <div class="gm-qa-answer">ほとんどのガイドが英語対応ですが、中国語、韓国語、フランス語などを話せる学生も在籍しています。各プロフィールから確認可能です。</div>
+    </div>
+
+    <!-- 6 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">雨が降った場合はどうなりますか？</div>
+      <div class="gm-qa-answer">小雨であれば実施しますが、荒天の場合は学生と相談して日程変更や、屋内中心のルート（美術館や商業施設など）への変更が可能です。</div>
+    </div>
+
+    <!-- 7 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">一人でも予約できますか？</div>
+      <div class="gm-qa-answer">はい、お一人様から大歓迎です。最大4名様までの少人数グループを基本として、アットホームなガイドを提供しています。</div>
+    </div>
+
+    <!-- 8 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">集合場所に遅れそうな場合はどうすればいいですか？</div>
+      <div class="gm-qa-answer">予約確定後に案内されるチャットまたは連絡先を通じて、速やかに学生ガイドへメッセージを送ってください。</div>
+    </div>
+
+    <!-- 9 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">チップを渡す必要はありますか？</div>
+      <div class="gm-qa-answer">日本にはチップの習慣がありませんので不要です。感謝の気持ちはぜひ、ツアー後のレビュー投稿で伝えていただけると学生の励みになります。</div>
+    </div>
+
+    <!-- 10 -->
+    <div class="gm-qa-item">
+      <div class="gm-qa-question">ガイドを途中で終了することはできますか？</div>
+      <div class="gm-qa-answer">可能です。体調不良や急な予定変更など、継続が難しい場合はその場でガイドに伝えて終了することができます（※返金規定はポリシーをご確認ください）。</div>
+    </div>
+
+  </div>
+</div>
+<!-- Q&A Section End -->
+
+</body>
+</html>
