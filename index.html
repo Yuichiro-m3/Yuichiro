@@ -13,14 +13,15 @@
         color-scheme: light;
         --ink: #17212b;
         --muted: #667085;
-        --paper: #f4f0e8;
+        --paper: #fcfaf2; /* Slightly more like washi paper */
         --surface: #ffffff;
         --line: #d8d0c4;
         --navy: #13233a;
-        --red: #d64032;
+        --red: #a40035; /* Traditional Enji-iro crimson */
         --teal: #007c78;
         --yellow: #f2b84b;
-        --shadow: 0 24px 60px rgba(19, 35, 58, 0.16);
+        --shadow: 0 24px 60px rgba(19, 35, 58, 0.12);
+        --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cpath d='M0 40a40 40 0 0 1 40-40 40 40 0 0 1 40 40' fill='%23d8d0c4' fill-opacity='0.15'/%3E%3C/svg%3E");
       }
 
       * {
@@ -35,13 +36,13 @@
         margin: 0;
         background: var(--paper);
         color: var(--ink);
+        background-image: 
+          radial-gradient(circle at 2px 2px, rgba(0,0,0,0.02) 1px, transparent 0);
+        background-size: 24px 24px;
         font-family:
           Inter,
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
+          "Hiragino Sans",
+          "Hiragino Kaku Gothic ProN",
           sans-serif;
         line-height: 1.6;
       }
@@ -76,17 +77,33 @@
         color: #ffffff;
         background: linear-gradient(
           to bottom,
-          rgba(12, 20, 32, 0.82),
+          rgba(12, 20, 32, 0.88),
           rgba(12, 20, 32, 0)
         );
       }
 
       .logo {
-        font-size: 0.92rem;
+        font-size: 0.95rem;
         font-weight: 900;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         text-decoration: none;
         text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo::before {
+        content: "案"; /* Japanese char for 'Guide/Plan' */
+        display: inline-grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        background: var(--red);
+        color: #fff;
+        font-size: 1rem;
+        border-radius: 4px;
+        font-family: serif;
       }
 
       .nav {
@@ -123,10 +140,49 @@
           ),
           url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1800&q=80")
             center / cover;
+        position: relative;
+        overflow: hidden;
+      }
+
+      @keyframes petal-fall {
+        0% { transform: translateY(-10vh) translateX(0) rotate(0); opacity: 0; }
+        10% { opacity: 0.8; }
+        90% { opacity: 0.8; }
+        100% { transform: translateY(110vh) translateX(100px) rotate(720deg); opacity: 0; }
+      }
+
+      .petal {
+        position: absolute;
+        top: -10vh;
+        background: #ffe6e6;
+        border-radius: 150% 0 150% 0;
+        width: 15px;
+        height: 15px;
+        opacity: 0.8;
+        pointer-events: none;
+        z-index: 1;
+        animation: petal-fall 10s linear infinite;
+      }
+
+      .hero::after {
+        content: "東京"; /* Vertical text 'Tokyo' */
+        position: absolute;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: serif;
+        font-size: 4rem;
+        writing-mode: vertical-rl;
+        letter-spacing: 0.5em;
+        opacity: 0.15;
+        pointer-events: none;
+        color: #fff;
       }
 
       .hero-inner {
         width: min(100%, 1040px);
+        position: relative;
+        z-index: 2;
       }
 
       .kicker {
@@ -228,18 +284,39 @@
         align-items: end;
         width: min(100%, 1180px);
         margin: 0 auto 34px;
+        position: relative;
+        padding-bottom: 40px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 120px;
+        height: 60px;
+        background-image: var(--pattern);
+        background-repeat: repeat;
+        background-size: 40px 20px;
+        opacity: 0.8;
+        pointer-events: none;
       }
 
       h2 {
         margin-bottom: 0;
-        font-size: clamp(2.05rem, 5vw, 4.4rem);
-        line-height: 1;
+        font-size: clamp(2rem, 4.5vw, 4rem);
+        line-height: 1.1;
         font-weight: 950;
+        font-family: "Playfair Display", serif;
+        letter-spacing: -0.02em;
       }
 
       .section-head p {
         margin-bottom: 0;
         color: var(--muted);
+        font-family: var(--font-sans);
+        font-weight: 400;
       }
 
       .feature-grid,
@@ -500,21 +577,48 @@
         font-style: normal;
         font-weight: 800;
       }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #eef7f6;
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
 
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        min-height: 28px;
-        padding: 0 10px;
-        border-radius: 999px;
-        background: #eef7f6;
-        color: var(--teal);
-        font-size: 0.78rem;
-        font-weight: 850;
-      }
+.hanko {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--red);
+  color: var(--red);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: serif;
+  font-size: 0.8rem;
+  font-weight: 900;
+  transform: rotate(-15deg);
+  opacity: 0.6;
+  user-select: none;
+  pointer-events: none;
+  z-index: 5;
+}
 
-      .match-layout {
-        display: grid;
+.hanko::after {
+  content: "公認"; /* Certified */
+  line-height: 1;
+}
+
+.guide {
+  overflow: hidden;
+  position: relative;
+}
         grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
         gap: 22px;
         width: min(100%, 1180px);
@@ -986,8 +1090,16 @@
 
     <main id="top">
       <section class="hero">
+        <div class="petal" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="petal" style="left: 30%; animation-delay: 2s; width: 10px; height: 10px;"></div>
+        <div class="petal" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="petal" style="left: 70%; animation-delay: 6s; width: 12px; height: 12px;"></div>
+        <div class="petal" style="left: 90%; animation-delay: 8s;"></div>
         <div class="hero-inner">
-          <p class="kicker">Student-led Tokyo tours</p>
+          <p class="kicker">
+            <span style="border: 1px solid currentColor; padding: 2px 6px; border-radius: 2px; margin-right: 10px; font-size: 0.6rem; vertical-align: middle;">立夏</span>
+            Student-led Tokyo tours
+          </p>
           <h1>
             <span class="hero-brand">GUIDE MATCH</span>
             <span class="hero-subtitle">Connects travelers with student guides.</span>
@@ -1702,6 +1814,7 @@
                 <div class="guide-media">
                   <img src="${guide.image}" alt="${guide.name}, student guide">
                 </div>
+                <div class="hanko"></div>
                 <div class="guide-body">
                   <span class="tag">${guide.name} / ${guide.school}</span>
                   <h3>${guide.headline}</h3>
