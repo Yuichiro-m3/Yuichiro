@@ -1220,6 +1220,11 @@
           justify-content: flex-start;
         }
       }
+      .mini-tags span.match-highlight {
+        background: #27ae60;
+        color: white;
+        border-color: #27ae60;
+      }
     </style>
   </head>
   <body>
@@ -2097,14 +2102,27 @@
       }
 
       function scoreGuide(guide, area, interests) {
-        let score = guide.areas.includes(area) ? 58 : 38;
-        score += interests.filter((interest) =>
+        let score = 0;
+        
+        // Area match: 60 points if area matches, 0 otherwise (mandatory-ish feel)
+        if (guide.areas.includes(area)) {
+          score += 60;
+        }
+
+        // Interest match: 10 points per matching interest
+        const matchingInterests = interests.filter((interest) =>
           guide.interests.includes(interest)
-        ).length * 14;
-        return Math.min(score, 98);
+        );
+        score += matchingInterests.length * 10;
+
+        // Bonus for high ratings (0-5 points)
+        score += Math.floor(parseFloat(guide.rating));
+
+        // Cap at 99% unless it's a perfect fit
+        return Math.min(score, 100);
       }
 
-      function renderMatches(matches, visitorName, length, plan) {
+      function renderMatches(matches, visitorName, length, plan, interests) {
         results.innerHTML = matches
           .map(
             ({ guide, score }) => `
@@ -2131,7 +2149,10 @@
                   <p>${guide.bio}</p>
                   <p><strong>Suggested ${length}-hour plan:</strong> ${guide.route}</p>
                   <div class="mini-tags">
-                    ${guide.interests.map((interest) => `<span>${interest}</span>`).join("")}
+                    ${guide.interests.map((interest) => {
+                      const isMatch = interests.includes(interest);
+                      return `<span class="${isMatch ? 'match-highlight' : ''}">${interest}${isMatch ? ' ✓' : ''}</span>`;
+                    }).join("")}
                   </div>
                 </div>
               </article>
@@ -2189,7 +2210,7 @@
             .sort((a, b) => b.score - a.score);
         }
 
-        renderMatches(matches, visitorName, length, plan);
+        renderMatches(matches, visitorName, length, plan, interests);
       });
 
       // Sumo Tour Logic
