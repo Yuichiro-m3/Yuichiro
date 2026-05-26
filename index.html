@@ -1459,10 +1459,13 @@
         <div class="section-head">
           <h2>Match with a guide.</h2>
           <p>
-            Tell us your travel style. This demo instantly suggests student
-            guides and a Tokyo-area plan. For a real launch, this form can be
-            connected to Google Forms, Airtable, Firebase, or a booking system.
+            Choose your preferred matching style:
           </p>
+          <ul style="max-width: 600px; margin: 1rem auto; text-align: left; line-height: 1.6;">
+            <li><strong>Choice Plan (Standard):</strong> Browse recommendations and pick the guide you like most.</li>
+            <li><strong>Assigned Plan:</strong> Just pick the area and time; our team will assign the best available guide for you.</li>
+            <li><strong>Budget Plan:</strong> Perfect for travelers on a budget. Guided by students with lower English proficiency at a bargain price.</li>
+          </ul>
         </div>
 
         <div class="match-layout">
@@ -1472,6 +1475,15 @@
               <label>
                 Name
                 <input name="name" autocomplete="name" placeholder="Alex" required>
+              </label>
+
+              <label>
+                Matching Plan
+                <select name="plan" id="planSelect">
+                  <option value="standard">Choice Plan (Browse & Pick)</option>
+                  <option value="assigned">Assigned Plan (We pick the guide for you)</option>
+                  <option value="budget">Budget Plan (Low English, bargain price)</option>
+                </select>
               </label>
 
               <label>
@@ -1976,6 +1988,42 @@
           route: "Asakusa shrine manners, tea stop, Sumida riverside photos",
           headline: "Etiquette, tea, and first-time confidence.",
           bio: "Helpful for shrine manners, tea breaks, and nervous first-time visitors."
+        },
+        {
+          name: "Yuto",
+          school: "Tokyo Denki University",
+          image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&crop=faces&w=900&h=1200&q=82",
+          areas: ["shibuya", "asakusa"],
+          interests: ["anime", "food"],
+          tags: ["Budget", "Anime", "Beginner English"],
+          prices: priceSet("¥3,000", "$20", "¥4,500", "$30", "¥6,000", "$40"),
+          rating: "4.3",
+          reviewCount: "12",
+          averageDelay: "10 min",
+          review: "Yuto's English is basic, but his enthusiasm for anime is great and the price is unbeatable.",
+          reviewer: "Mark, USA",
+          route: "Akihabara hidden shops, affordable ramen spot",
+          headline: "Budget anime tour with a friendly learner.",
+          bio: "I am studying English. I love anime and cheap local food! Very low price.",
+          isBudget: true
+        },
+        {
+          name: "Hina",
+          school: "Japan Women's University",
+          image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=900&h=1200&q=82",
+          areas: ["kichijoji", "shibuya"],
+          interests: ["food", "shopping"],
+          tags: ["Budget", "Shopping", "Beginner English"],
+          prices: priceSet("¥3,000", "$20", "¥4,500", "$30", "¥6,000", "$40"),
+          rating: "4.4",
+          reviewCount: "8",
+          averageDelay: "12 min",
+          review: "Great value. We used translation apps sometimes, but had a lot of fun shopping.",
+          reviewer: "Sarah, UK",
+          route: "Kichijoji Sun Road, local snack stalls",
+          headline: "Bargain shopping and local snacks.",
+          bio: "I like shopping and sweets. My English is not perfect, but I will try my best!",
+          isBudget: true
         }
       ];
 
@@ -1986,6 +2034,7 @@
 
       function renderGuideCards() {
         guideGrid.innerHTML = guides
+          .filter(guide => !guide.isBudget)
           .map(
             (guide) => `
               <article class="guide">
@@ -2055,7 +2104,7 @@
         return Math.min(score, 98);
       }
 
-      function renderMatches(matches, visitorName, length) {
+      function renderMatches(matches, visitorName, length, plan) {
         results.innerHTML = matches
           .map(
             ({ guide, score }) => `
@@ -2064,7 +2113,7 @@
                   <img src="${guide.image}" alt="${guide.name}, student guide">
                 </div>
                 <div>
-                  <span class="score">${score}% match</span>
+                  <span class="score">${plan === 'assigned' ? 'Assigned' : score + '% match'}</span>
                   <h3>${guide.name} / ${guide.school}</h3>
                   <div class="result-price">
                     ${guide.prices[length].jpy}
@@ -2090,8 +2139,15 @@
           )
           .join("");
 
+        let planText = "";
+        if (plan === "budget") {
+          planText = " (Budget Plan: Bargain price with language learners)";
+        } else if (plan === "assigned") {
+          planText = " (Assigned Plan: We selected the best guide for your area)";
+        }
+
         resultCopy.textContent =
-          `${visitorName || "Your"} request is ready. These student guides are ranked by area and interest fit.`;
+          `${visitorName || "Your"} request is ready${planText}. These student guides are ranked by area and interest fit.`;
       }
 
       form.addEventListener("submit", (event) => {
@@ -2101,16 +2157,39 @@
         const area = formData.get("area");
         const length = formData.get("length");
         const visitorName = formData.get("name");
+        const plan = formData.get("plan");
         const interests = selectedInterests(formData);
 
-        const matches = guides
-          .map((guide) => ({
-            guide,
-            score: scoreGuide(guide, area, interests)
-          }))
-          .sort((a, b) => b.score - a.score);
+        let matches = [];
 
-        renderMatches(matches, visitorName, length);
+        if (plan === "budget") {
+          matches = guides
+            .filter((g) => g.isBudget)
+            .map((guide) => ({
+              guide,
+              score: scoreGuide(guide, area, interests)
+            }))
+            .sort((a, b) => b.score - a.score);
+        } else if (plan === "assigned") {
+          const bestMatch = guides
+            .filter((g) => !g.isBudget)
+            .map((guide) => ({
+              guide,
+              score: scoreGuide(guide, area, interests)
+            }))
+            .sort((a, b) => b.score - a.score)[0];
+          matches = [bestMatch];
+        } else {
+          matches = guides
+            .filter((g) => !g.isBudget)
+            .map((guide) => ({
+              guide,
+              score: scoreGuide(guide, area, interests)
+            }))
+            .sort((a, b) => b.score - a.score);
+        }
+
+        renderMatches(matches, visitorName, length, plan);
       });
 
       // Sumo Tour Logic
