@@ -1225,6 +1225,50 @@
         color: white;
         border-color: #27ae60;
       }
+      .route-timeline {
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: #fdfaf6;
+        border-left: 3px solid #e67e22;
+        border-radius: 0 8px 8px 0;
+      }
+      .route-timeline strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .route-timeline ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .route-timeline li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: #555;
+      }
+      .route-timeline li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #e67e22;
+        font-weight: bold;
+      }
+      .route-timeline li:last-child {
+        margin-bottom: 0;
+      }
+      .result-route {
+        background: #fff;
+        border-left-color: #27ae60;
+      }
+      .result-route li::before {
+        color: #27ae60;
+      }
     </style>
   </head>
   <body>
@@ -1738,9 +1782,9 @@
           review:
             "Yui made Tokyo feel calm and personal. The cafe and bookstore route was exactly what I wanted.",
           reviewer: "Emma, Australia",
-          route: "Shimokitazawa vintage shops, Waseda campus, Kagurazaka cafes",
+          route: "Shimokitazawa vintage shops, Waseda campus (Okuma Garden), Kagurazaka (Zen-koku-ji temple)",
           headline: "Cafes, vintage shops, and campus culture.",
-          bio: "Relaxed conversation, coffee stops, bookstores, and everyday student life."
+          bio: "Relaxed conversation at coffee stops in Kichijoji, bookstores in Jinbocho, and everyday student life."
         },
         {
           name: "Ren",
@@ -1756,9 +1800,9 @@
           review:
             "Ren knew the best food counters and helped us understand the trains without stress.",
           reviewer: "Lucas, United States",
-          route: "Shibuya backstreets, Ebisu food counters, Yokohama night view",
+          route: "Shibuya Crossing (backstreets), Ebisu food counters (Yebisu Garden Place), Yokohama Minato Mirai night view",
           headline: "Food alleys, train tips, and night views.",
-          bio: "Food-focused routes, train confidence, and casual nightlife."
+          bio: "Food-focused routes in Shibuya, train confidence, and casual nightlife in Yokohama."
         },
         {
           name: "Aoi",
@@ -1774,9 +1818,9 @@
           review:
             "Aoi explained shrine manners clearly and found great photo spots around Asakusa and Yanaka.",
           reviewer: "Sofia, Spain",
-          route: "Asakusa temple walk, Akihabara shops, Yanaka old-town lanes",
+          route: "Asakusa Senso-ji Temple walk, Akihabara Animate shops, Yanaka Ginza old-town lanes",
           headline: "Temples, anime shops, and photo walks.",
-          bio: "Anime, shrine etiquette, simple Japanese phrases, and photo spots."
+          bio: "Anime in Akihabara, shrine etiquette in Asakusa, simple Japanese phrases, and photo spots."
         },
         {
           name: "Haru",
@@ -1792,9 +1836,9 @@
           review:
             "Haru connected old Tokyo history with places we could actually enjoy walking.",
           reviewer: "Mia, Canada",
-          route: "Ueno museums, Yanaka lanes, Nezu Shrine, local sweets",
+          route: "Ueno Park museums, Yanaka Cemetery lanes, Nezu Shrine (tunnel of gates), local sweets in Ueno",
           headline: "Old Tokyo history with quiet local walks.",
-          bio: "Good for museum routes, traditional streets, and slower cultural days."
+          bio: "Good for museum routes in Ueno, traditional streets of Yanaka, and slower cultural days."
         },
         {
           name: "Mina",
@@ -1810,9 +1854,9 @@
           review:
             "Mina found small fashion stores and helped us order at places with no English menu.",
           reviewer: "Nora, Germany",
-          route: "Harajuku side streets, Omotesando design shops, Kichijoji dinner",
+          route: "Harajuku Takeshita Street (side streets), Omotesando design shops, Kichijoji Harmonica Alley dinner",
           headline: "Fashion, snacks, and bilingual city energy.",
-          bio: "Best for shopping routes, cute cafes, and easy conversation."
+          bio: "Best for shopping routes in Harajuku, cute cafes in Omotesando, and easy conversation."
         },
         {
           name: "Daiki",
@@ -1828,9 +1872,9 @@
           review:
             "Daiki's Yokohama night route was smooth, friendly, and full of great skyline spots.",
           reviewer: "Ethan, Singapore",
-          route: "Minato Mirai, Chinatown snacks, Osanbashi night view",
+          route: "Yokohama Minato Mirai (Cosmo World), Chinatown snacks (Chukagai), Osanbashi Pier night view",
           headline: "Yokohama lights and practical train support.",
-          bio: "Clear transit help, night photography, and modern city routes."
+          bio: "Clear transit help at Shibuya station, night photography in Yokohama, and modern city routes."
         },
         {
           name: "Saki",
@@ -1846,9 +1890,9 @@
           review:
             "Saki was punctual, thoughtful, and made a rainy afternoon feel special.",
           reviewer: "Lena, France",
-          route: "Ikebukuro bookshops, Kichijoji park, small coffee stands",
+          route: "Ikebukuro (Sunshine City bookshops), Kichijoji Inokashira Park, small coffee stands in Shimokitazawa",
           headline: "Bookshops, parks, and quiet conversation.",
-          bio: "A calm guide for literature, cafes, parks, and slower Tokyo days."
+          bio: "A calm guide for literature in Ikebukuro, cafes in Kichijoji, and slower Tokyo days."
         },
         {
           name: "Kento",
@@ -1864,9 +1908,9 @@
           review:
             "Kento gave us a relaxed Kamakura day with temples, beach views, and no rushed feeling.",
           reviewer: "Grace, United Kingdom",
-          route: "Kamakura temples, Komachi Street snacks, Enoshima sunset",
+          route: "Kamakura Kotoku-in (Great Buddha), Komachi-dori Street snacks, Enoshima Island sunset",
           headline: "Kamakura temples and seaside walks.",
-          bio: "Good for day trips, history, snacks, and coastal photo routes."
+          bio: "Good for day trips to Kamakura, history of Hasedera temple, and coastal photo routes."
         },
         {
           name: "Rina",
@@ -1882,9 +1926,9 @@
           review:
             "Rina helped us find photo spots that looked great without being too crowded.",
           reviewer: "Olivia, United States",
-          route: "Shibuya Sky area, Cat Street, Asakusa after sunset",
+          route: "Shibuya Sky observation deck, Cat Street (Harajuku), Asakusa Senso-ji after sunset",
           headline: "Stylish photo routes and city views.",
-          bio: "Great for fashion streets, skyline photos, and polished Tokyo routes."
+          bio: "Great for fashion streets in Shibuya, skyline photos at Shibuya Sky, and polished Tokyo routes."
         },
         {
           name: "Toma",
@@ -1900,9 +1944,9 @@
           review:
             "Toma made Akihabara easier to understand and picked a ramen shop we loved.",
           reviewer: "Noah, New Zealand",
-          route: "Akihabara shops, Kanda ramen, Asakusa evening walk",
+          route: "Akihabara Radio Kaikan shops, Kanda Goshono-ya ramen, Asakusa Sumida Park evening walk",
           headline: "Anime shops, ramen, and pop culture.",
-          bio: "Best for first-time anime shopping, casual food, and simple Japanese."
+          bio: "Best for first-time anime shopping in Akihabara, casual food, and simple Japanese."
         },
         {
           name: "Mei",
@@ -1918,9 +1962,9 @@
           review:
             "Mei chose peaceful places and explained small customs in a very natural way.",
           reviewer: "Isabella, Italy",
-          route: "Mejiro gardens, Yanaka crafts, Kichijoji gallery stops",
+          route: "Mejiro Gardens (Teahouse), Yanaka craft workshops, Kichijoji Ghibli Museum area (gallery stops)",
           headline: "Gardens, art, and gentle local culture.",
-          bio: "A thoughtful match for art, gardens, crafts, and calm neighborhoods."
+          bio: "A thoughtful match for art in Ueno, gardens in Mejiro, and calm neighborhoods."
         },
         {
           name: "Sho",
@@ -1936,9 +1980,9 @@
           review:
             "Sho was easygoing and took us to food streets we would not have found alone.",
           reviewer: "Daniel, Mexico",
-          route: "Yokohama Chinatown, Noge bars, harbor evening walk",
+          route: "Yokohama Chinatown (Xie-Xie tea), Noge district bars, Yokohama Yamashita Park evening walk",
           headline: "Street food and casual local nightlife.",
-          bio: "Friendly, flexible, and strongest around food streets and evening plans."
+          bio: "Friendly, flexible, and strongest around Yokohama Chinatown food streets."
         },
         {
           name: "Kana",
@@ -1954,9 +1998,9 @@
           review:
             "Kana was perfectly on time and gave us an art-focused Tokyo day with real depth.",
           reviewer: "Ava, United States",
-          route: "Ueno art museums, Kuramae crafts, Asakusa paper shops",
+          route: "Ueno Tokyo Metropolitan Art Museum, Kuramae craft shops (Mokushido), Asakusa Ozu Washi paper shops",
           headline: "Art museums, crafts, and design details.",
-          bio: "Best for travelers who care about art, design, handmade goods, and museums."
+          bio: "Best for travelers who care about art in Ueno, design in Kuramae, and museums."
         },
         {
           name: "Ryota",
@@ -1972,9 +2016,9 @@
           review:
             "Ryota understood the music scene and helped us find a fun live house.",
           reviewer: "Jack, Ireland",
-          route: "Shimokitazawa records, live house area, late-night curry",
+          route: "Shimokitazawa Disk Union records, live house area (SHELTER), Kichijoji late-night curry (Mame-Zon)",
           headline: "Music, records, and late-night food.",
-          bio: "A strong pick for music lovers, casual bars, and energetic neighborhoods."
+          bio: "A strong pick for music lovers in Shimokitazawa, casual bars, and energetic neighborhoods."
         },
         {
           name: "Nana",
@@ -1990,9 +2034,9 @@
           review:
             "Nana explained etiquette clearly and made us comfortable trying Japanese phrases.",
           reviewer: "Chloe, Canada",
-          route: "Asakusa shrine manners, tea stop, Sumida riverside photos",
+          route: "Asakusa Senso-ji shrine manners, Nakamise-dori tea stop, Sumida Riverside Park photos",
           headline: "Etiquette, tea, and first-time confidence.",
-          bio: "Helpful for shrine manners, tea breaks, and nervous first-time visitors."
+          bio: "Helpful for shrine manners in Asakusa, tea breaks in Yanaka, and nervous first-time visitors."
         },
         {
           name: "Yuto",
@@ -2081,6 +2125,12 @@
                       <em class="price-usd">approx. ${guide.prices[7].usd}</em>
                     </div>
                   </div>
+                  <div class="route-timeline">
+                    <strong>Suggested Route:</strong>
+                    <ul>
+                      ${guide.route.split(',').map(step => `<li>${step.trim()}</li>`).join('')}
+                    </ul>
+                  </div>
                   <div class="review-box">
                     <div class="rating">
                       <span>${guide.rating} / 5.0</span>
@@ -2147,7 +2197,12 @@
                     <span>${guide.areas.length} local areas</span>
                   </div>
                   <p>${guide.bio}</p>
-                  <p><strong>Suggested ${length}-hour plan:</strong> ${guide.route}</p>
+                  <div class="route-timeline result-route">
+                    <strong>Suggested ${length}-hour plan:</strong>
+                    <ul>
+                      ${guide.route.split(',').map(step => `<li>${step.trim()}</li>`).join('')}
+                    </ul>
+                  </div>
                   <div class="mini-tags">
                     ${guide.interests.map((interest) => {
                       const isMatch = interests.includes(interest);
